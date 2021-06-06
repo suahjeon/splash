@@ -1,35 +1,27 @@
 package com.example.splash;
 
+
 import android.app.Activity;
-import android.content.Intent;
-import android.os.Handler;
 import android.os.Bundle;
-import android.view.WindowManager;
+import android.os.Handler;
 
-public class splashActivity extends MainActivity {
-
+public class splashActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_splash);
-
-        Handler hd = new Handler();
-        hd.postDelayed(new splashhandler(), 3000);
-
+        startLoading();
     }
-
-    private class splashhandler implements Runnable{
-        public void run(){
-            startActivity(new Intent(getApplication(), MainActivity.class));
-            splashActivity.this.finish();
-        }
+    private void startLoading() {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                finish();
+            }
+        }, 4000);
     }
-
-    @Override
-    public void onBackPressed() {
-
-    }
-
 }
+
+
 
